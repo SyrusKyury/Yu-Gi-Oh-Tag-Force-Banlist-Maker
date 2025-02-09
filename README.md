@@ -4,6 +4,8 @@ This tool allows you to **modify the banlist** in **Yu-Gi-Oh Tag Force (EU Versi
 
 Once you've generated or modified your desired banlist, you can load it into your PSP or PPSSPP (a PSP emulator) and modify the in-game banlist accordingly.
 
+You can access the software from [here](https://syruskyury.github.io/Yu-Gi-Oh-Tag-Force-Banlist-Maker/).
+
 ## Features
 
 - **Create custom banlists**: Use the simple interface to create your own CWCheat codes for the banlist.
