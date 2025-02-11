@@ -2573,16 +2573,15 @@
 
             let lines = cw_cheat.split("\n");
             lines = lines.filter(line => line.startsWith("_L")).slice(3);
-            console.log(lines);
             
             // Read the forbidden size
-            let forbidden_size = lines[0].slice(19, 20);
+            let forbidden_size = parseInt(lines[0].slice(16, 20), 16);
             lines = lines.slice(2);
 
-            let limited_size = lines[0].slice(19, 20);
+            let limited_size = parseInt(lines[0].slice(16, 20), 16);
             lines = lines.slice(2);
 
-            let semi_limited_size = lines[0].slice(19, 20);
+            let semi_limited_size = parseInt(lines[0].slice(16, 20), 16);
             lines = lines.slice(2);
 
 
@@ -2603,10 +2602,11 @@
             }
 
             lines = lines.slice(limited_size);
-
+            console.log(semi_limited_size);
             for (let i = 0; i < semi_limited_size; i++) {
                 let card = lines[i].slice(-4);
                 card = parseInt(card, 16).toString();
+                console.log(card);
                 let key = Object.keys(cards).find(key => cards[key] === card);
                 updateList(key, "2");
             }
@@ -2636,14 +2636,15 @@
             size = size*2;
 
             // Cast size into hex
-            size = size.toString(16).length < 2 ? "0" + size.toString(16).toUpperCase() : size.toString(16).toUpperCase(); 
+            size = size.toString(16).toUpperCase();
+            size = "0".repeat(4 - size.length) + size;
 
 
             let cheat = 
 `_C0 Custom banlist
 _L 0xD0073900 0x20000000
 _L 0x1003E4A0 0x00003900
-_L 0x1003E4B8 0x000000${size}
+_L 0x1003E4B8 0x0000${size}
 `           
             let base = 0x08873900 - 0x08800000;
 
@@ -2761,6 +2762,7 @@ _L 0x00000002 0x00000000
         renderCards();
     </script>
 </body>
+<!--
 <footer class="fixed bottom-0 w-full bg-gray-800 text-white py-4 text-center">
     <p class="text-lg font-semibold">If you enjoy this project and want to support me, consider making a donation! 💖</p>
     <div class="mt-2">
@@ -2770,5 +2772,5 @@ _L 0x00000002 0x00000000
                  class="w-40 mx-auto">
         </a>
     </div>
-</footer>
+</footer> -->
 </html>
